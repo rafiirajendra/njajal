@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 MODEL_PATH = os.path.join(
-    "..", "Fraud_Detectio", "saved_models", "ktp_fraud_cnn_tampering_v1.h5"
+    "..", "Fraud_Detectio", "saved_models", "ktp_fraud_cnn_tampering_v1.tflite"
 )
 model = tf.keras.models.load_model(MODEL_PATH)
 

@@ -55,15 +55,17 @@ def health():
 def predict():
     """
     Prediksi KTP fraud detection.
-
+    
     Asumsi model:
       - Output sigmoid = P(VALID)
       - P(FRAUD) = 1 - P(VALID)
     """
-    if "image" not in request.files:
-        return jsonify({"error": "No image file found. Use key 'image'."}), 400
+    # Terima file dengan key apapun (ambil file pertama yang dikirim)
+    if not request.files:
+        return jsonify({"error": "No file uploaded."}), 400
 
-    file = request.files["image"]
+    # Ambil file pertama yang ada (key bebas)
+    file = next(iter(request.files.values()))
     if file.filename == "":
         return jsonify({"error": "Empty filename."}), 400
 

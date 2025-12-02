@@ -85,7 +85,7 @@ def predict():
         p_valid = float(output_data[0][0])
         p_fraud = 1.0 - p_valid
 
-        thresh_valid = 0.5
+        thresh_valid = 0.8
         label = "VALID" if p_valid >= thresh_valid else "FRAUD"
 
         result = {
